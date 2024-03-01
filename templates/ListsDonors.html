@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<table class="table table-primary table-striped">
+
+<tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>Contact</th>
+      <th>Blood Group</th>
+      <th>Donation Date</th>
+      <th>Update</th>
+      <th>Delete</th>
+    
+</tr>
+{% for dt in data %}   
+<tr>
+   <td>{{ dt.dname }}</td>
+   <td>{{ dt.address }}</td>
+   <td>{{ dt.city }}</td>
+   <td>{{ dt.contact }}</td>
+   <td>{{ dt.bloodgroup }}</td> 
+   <td>{{ dt.bloodCollectiondt }}
+   <td><a href="{% url 'updonor' id=dt.donorid %}"><button class="btn btn-success">Update</button></a></td>
+   <td><a href="{% url 'deldonor' id=dt.donorid %}"><button class="btn btn-danger">Delete</button></a></td>
+   
+</tr>
+{% endfor %}
+
+</table>
+{% endblock body %}

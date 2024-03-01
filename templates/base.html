@@ -1,0 +1,104 @@
+{%load static%}
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+   
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
+  <link href="{% static 'mycode.css' %}" rel="stylesheet" crossorigin="anonymous">
+  </head>
+  <body style="background-image:url({% static '1.jpg' %});background-size:cover">
+    
+    
+
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <img src="{% static 'icons.png' %}" width="50"  height="50" alt="Not Found"
+           <a class="navbar-brand" href="#">Blood Bank App</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="home">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="search">Search</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  
+                  Complaints
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="addCO">Add Complaints</a></li>
+                  <li><a class="dropdown-item" href="ListsComplaints">View All Complaints</a></li>
+              </ul>
+              {% if 'Admin' in request.session.utype %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  
+                  Blood Bank Management
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="addBB">Add Blood Bank</a></li>
+                  <li><a class="dropdown-item" href="showBBlist">View Blood Bank List</a></li>
+                </ul>
+              </li>
+              {% endif %}
+              {% if 'BloodBank' in request.session.utype %}
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  
+                  Donors
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="addDO">Add Donors</a></li>
+                  <li><a class="dropdown-item" href="ListsDonors">View Donors List</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  
+                  Receivers
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="addRE">Add Receivers</a></li>
+                  <li><a class="dropdown-item" href="ListsReceivers">View Receivers List</a></li>
+                </ul>
+              </li>
+              {% endif %}
+              </li>
+            </ul>
+            {% if request.session.username %}
+              <p>Welcome : {{ request.session.username}}</p>  
+              <a href="{% url 'logout' %}"><button class="btn btn-outline-primary" type="submit">Logout</button></a>
+            {% else %}  
+              <a href="{% url 'login' %}"><button class="btn btn-outline-primary" type="submit">Login</button></a>
+            {% endif %}  
+            
+          </div>
+        </div>
+      </nav>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script> -->
+    <script src="{% static 'myjscode.js' %}" crossorigin="anonymous"></script>
+    
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+    -->
+    {% block body %}
+
+    {% endblock %}
+  </body>
+</html>

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<table class="table table-primary table-striped">
+
+<tr>
+      <th>Complaint No</th>
+      <th>Complaint Name</th>
+      <th>Complaint Phone</th>
+      <th>Complaint Message</th>
+      <th>Complaint Status</th>
+     
+</tr>
+{% for dt in data %}   
+<tr>
+   <td>{{ dt.comp_no }}</td>
+   <td>{{ dt.comp_name }}</td>
+   <td>{{ dt.comp_phone }}</td>
+   <td>{{ dt.comp_msg }}</td>
+   <td>{{ dt.status }}</td> 
+  
+   
+</tr>
+{% endfor %}
+
+</table>
+{% endblock body %}

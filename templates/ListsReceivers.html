@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<table class="table table-primary table-striped">
+
+<tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>Email</th>
+      <th>Contact</th>
+      <th>Blood Group</th>
+      <th>Quantity</th>
+      <th>Alotted Blood Bank No</th>
+      <th>Request no</th>
+      <th>Request dt</th>
+      <th>Request Status</th>
+      <th>Hospital</th>
+      <th>Blood Bank id</th>
+      <th>Update</th>
+      <th>Delete</th>
+    
+</tr>
+{% for dt in data %}   
+<tr>
+   <td>{{ dt.rcname }}</td>
+   <td>{{ dt.address }}</td>
+   <td>{{ dt.city }}</td>
+   <td>{{ dt.email }}</td>
+   <td>{{ dt.contact }}</td>
+   <td>{{ dt.bloodgroup }}</td>
+   <td>{{ dt.qty_req }}</td>
+   <td>{{ dt.alloted_bloodbagno }}</td>
+   <td>{{ dt.request_no }}</td>
+   <td>{{ dt.request_dt }}</td>
+   <td>{{ dt.request_status }}</td> 
+   <td>{{ dt.hospital }}</td> 
+   <td>{{ dt.bloodbankid }}</td>
+   <td><a href="{% url 'upreceiver' id=dt.receiverid %}"><button class="btn btn-success">Update</button></a></td>
+   <td><a href="{% url 'delreceiver' id=dt.receiverid %}"><button class="btn btn-danger">Delete</button></a></td>
+</tr>
+{% endfor %}
+</table>
+{% endblock body %}

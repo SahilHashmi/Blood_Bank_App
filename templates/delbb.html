@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block body %}
+<form method="POST">
+    {% csrf_token %}
+    <pre>
+        Do you want to Delete the record of :{{ myforms.bbname}} ?
+    <input type="submit" class="btn btn-danger" value="Delete"/>
+</pre>
+</form>
+{% endblock body %}
